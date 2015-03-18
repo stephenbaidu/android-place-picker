@@ -1,8 +1,0 @@
-<resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="place_picker_suggest_list_row_name">16sp</dimen>
-    <dimen name="place_picker_suggest_list_row_description">15sp</dimen>
-    <dimen name="place_picker_list_row_icon_width">70dp</dimen>
-</resources>
