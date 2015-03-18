@@ -1,4 +1,4 @@
-package com.github.stephenbaidu.androidplacepicker;
+package com.github.stephenbaidu.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.github.stephenbaidu.androidplacepicker.R;
 import com.github.stephenbaidu.placepicker.PlaceDetail;
 import com.github.stephenbaidu.placepicker.PlacePicker;
 
