@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Place Picker</string>
+
+    <string name="place_picker_search_label">Search</string>
+    <string name="place_picker_search_hint">Search place...</string>
+    <string name="title_activity_recent_searches">Recent Searches</string>
+</resources>

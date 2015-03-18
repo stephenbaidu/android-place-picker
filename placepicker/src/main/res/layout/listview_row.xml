@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:contentDescription="icon"
+        android:layout_width="@dimen/place_picker_list_row_icon_width"
+        android:layout_height="50dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingStart="10dp"
+        android:paddingRight="20dp"
+        android:paddingEnd="20dp"
+        android:src="@drawable/ic_place_history"/>
+
+    <TextView
+        android:id="@+id/name" android:text="Accra Polytechnic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:layout_alignTop="@+id/icon"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/icon"
+        android:layout_toEndOf="@+id/icon"
+        android:textStyle="bold"
+        android:textSize="@dimen/place_picker_suggest_list_row_name"/>
+
+    <TextView
+        android:id="@+id/description" android:text="Accra, Ghana"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:layout_below="@+id/name"
+        android:layout_toRightOf="@+id/icon"
+        android:layout_toEndOf="@+id/icon"
+        android:textSize="@dimen/place_picker_suggest_list_row_description"/>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#eeeeee"
+        android:layout_toRightOf="@+id/icon"
+        android:layout_toEndOf="@+id/icon"
+        android:layout_alignBottom="@+id/icon"/>
+
+</RelativeLayout>
