@@ -1,1 +1,1 @@
-include ':demo', ':android-place-picker'
+include ':demo', ':placepicker'
