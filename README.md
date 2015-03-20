@@ -54,7 +54,7 @@ Then you just need to add the following dependency to your `build.gradle`.
     startActivityForResult(intent, PlacePicker.REQUEST_CODE_PLACE);
     
  
- ### Use the selected place
+### Use the selected place
  ```java
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
