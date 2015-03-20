@@ -81,11 +81,11 @@ public class PlaceHistoryManager {
         }
     }
 
-    public void addToHistory(PlaceInfo placeInfo) {
+    private void addToHistory(PlaceInfo placeInfo) {
         int newIndex = getHistoryRecords().size() + 1;
 
         // History is full
-        if(newIndex >= HISTORY_SIZE) {
+        if(newIndex > HISTORY_SIZE) {
             // Remove oldest record
             for (int i = 0; i < HISTORY_SIZE; ++i) {
                 putHistoryRecord(getHistoryRecord(i + 2), i + 1);
@@ -96,17 +96,25 @@ public class PlaceHistoryManager {
         putHistoryRecord(placeInfo, newIndex);
     }
 
-    public void updateInHistory(PlaceInfo placeInfo) {
+    public void updateHistory(PlaceInfo placeInfo) {
         int index = findHistoryRecord(placeInfo.placeId);
 
+        // History record does not exist
+        if (index == 0) {
+            addToHistory(placeInfo);
+            return;
+        }
+
         // If last record, leave at current index
-        if (getHistoryRecord(index + 1) == null) return;
+        if (getHistoryRecord(index + 1) == null) {
+            return;
+        }
 
         removeFromHistory(index);
         addToHistory(placeInfo);
     }
 
-    public int findHistoryRecord(String placeId) {
+    private int findHistoryRecord(String placeId) {
         for (int i = 0; i < HISTORY_SIZE; ++i) {
             PlaceInfo placeInfo = getHistoryRecord(i + 1);
 
@@ -120,7 +128,7 @@ public class PlaceHistoryManager {
         return 0;
     }
 
-    public void removeFromHistory(int index) {
+    private void removeFromHistory(int index) {
         // Will return null for invalid index
         PlaceInfo placeInfo = getHistoryRecord(index);
         PlaceInfo nextRecord;

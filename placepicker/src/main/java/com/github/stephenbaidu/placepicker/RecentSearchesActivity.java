@@ -30,7 +30,7 @@ public class RecentSearchesActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 PlaceInfo placeInfo = (PlaceInfo) parent.getItemAtPosition(position);
-                placeHistoryManager.updateInHistory(placeInfo);
+                placeHistoryManager.updateHistory(placeInfo);
 
                 PlaceDetail placeDetail = new PlaceDetail(placeInfo.placeId, placeInfo.getDescription(), 0.0, 0.0);
                 sendResult(placeDetail);

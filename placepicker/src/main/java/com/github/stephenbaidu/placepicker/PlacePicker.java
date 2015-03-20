@@ -69,7 +69,7 @@ public class PlacePicker extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 PlaceInfo placeInfo = (PlaceInfo) parent.getItemAtPosition(position);
-                placeHistoryManager.addToHistory(placeInfo);
+                placeHistoryManager.updateHistory(placeInfo);
                 PlaceDetail placeDetail = new PlaceDetail(placeInfo.placeId, placeInfo.getDescription(), 0.0, 0.0);
                 sendResult(placeDetail);
             }
@@ -82,13 +82,13 @@ public class PlacePicker extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 PlaceInfo placeInfo = (PlaceInfo) parent.getItemAtPosition(position);
-                if(placeInfo.isLink) {
+                String moreHistoryText = getResources().getString(R.string.more_recent_history_text);
+                if(placeInfo.name.equals(moreHistoryText)) {
                     Intent intent = new Intent(getApplicationContext(), RecentSearchesActivity.class);
 
                     startActivityForResult(intent, PlacePicker.REQUEST_CODE_RECENT_SEARCHES);
                 } else {
-                    placeHistoryManager.updateInHistory(placeInfo);
-
+                    placeHistoryManager.updateHistory(placeInfo);
                     PlaceDetail placeDetail = new PlaceDetail(placeInfo.placeId, placeInfo.getDescription(), 0.0, 0.0);
                     sendResult(placeDetail);
                 }
