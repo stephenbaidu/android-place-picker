@@ -44,10 +44,10 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "maven"
-        name = "placepicker"
+        name = "android-place-picker"
         websiteUrl = siteUrl
         vcsUrl = gitUrl
-        licenses = ["Apache-2.0"]
+        licenses = ["MIT"]
         publish = true
     }
 }
@@ -61,8 +61,8 @@ install {
                 url siteUrl
                 licenses {
                     license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        name 'The MIT License'
+                        url 'http://opensource.org/licenses/MIT'
                     }
                 }
                 developers {
