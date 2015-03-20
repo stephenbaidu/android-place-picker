@@ -49,7 +49,7 @@ public class PlaceHistoryManager {
     }
 
     private PlaceInfo getHistoryRecord(int index) {
-        if(index <= 0) {
+        if(index <= 0 || index > HISTORY_SIZE) {
             return null;
         }
 
@@ -68,7 +68,7 @@ public class PlaceHistoryManager {
     }
 
     private void putHistoryRecord(PlaceInfo placeInfo, int index) {
-        if(index <= 0) {
+        if(index <= 0 || index > HISTORY_SIZE) {
             return;
         }
 
@@ -98,6 +98,10 @@ public class PlaceHistoryManager {
 
     public void updateInHistory(PlaceInfo placeInfo) {
         int index = findHistoryRecord(placeInfo.placeId);
+
+        // If last record, leave at current index
+        if (getHistoryRecord(index + 1) == null) return;
+
         removeFromHistory(index);
         addToHistory(placeInfo);
     }
@@ -117,7 +121,7 @@ public class PlaceHistoryManager {
     }
 
     public void removeFromHistory(int index) {
-        // Will return null for invalid indices
+        // Will return null for invalid index
         PlaceInfo placeInfo = getHistoryRecord(index);
         PlaceInfo nextRecord;
 

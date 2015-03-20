@@ -14,7 +14,7 @@ public class PlaceApiRequest {
     public static void autocomplete(String apiKey, String extraQuery, String input, AutocompleteTask.OnTaskCompleted onTaskCompleted) {
         AutocompleteTask autocompleteTask = new AutocompleteTask(apiKey, extraQuery);
         autocompleteTask.setOnTaskCompleted(onTaskCompleted);
-        autocompleteTask.execute(input, apiKey, extraQuery);
+        autocompleteTask.execute(input);
     }
 
     public static void details(String apiKey, String placeId, PlaceDetailTask.OnTaskCompleted onTaskCompleted) {

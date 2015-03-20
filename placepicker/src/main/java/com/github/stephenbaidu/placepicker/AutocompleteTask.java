@@ -27,7 +27,7 @@ public class AutocompleteTask extends AsyncTask<String, Void, List<PlaceInfo>> {
 
     public AutocompleteTask(String apiKey, String extraQuery) {
         this.apiKey = apiKey;
-        this.extraQuery = extraQuery;
+        this.extraQuery = (extraQuery == null)? "" : extraQuery;
         this.onTaskCompleted = null;
     }
 
@@ -50,7 +50,6 @@ public class AutocompleteTask extends AsyncTask<String, Void, List<PlaceInfo>> {
             sb.append("?key=" + apiKey);
             sb.append(extraQuery);
             sb.append("&input=" + URLEncoder.encode(params[0], "utf8"));
-
             URL url = new URL(sb.toString());
             conn = (HttpURLConnection) url.openConnection();
             InputStreamReader in = new InputStreamReader(conn.getInputStream());

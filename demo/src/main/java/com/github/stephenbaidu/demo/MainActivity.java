@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.stephenbaidu.androidplacepicker.R;
 import com.github.stephenbaidu.placepicker.PlaceDetail;
@@ -37,8 +38,14 @@ public class MainActivity extends ActionBarActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (api_key.length() == 0) {
+                    Toast.makeText(MainActivity.this, "No API Key provided", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 Intent intent = new Intent(MainActivity.this, PlacePicker.class);
                 intent.putExtra(PlacePicker.PARAM_API_KEY, api_key);
+                intent.putExtra(PlacePicker.PARAM_EXTRA_QUERY, "&components=country:gh&types=(cities)");
 
                 startActivityForResult(intent, PlacePicker.REQUEST_CODE_PLACE);
             }
@@ -47,6 +54,11 @@ public class MainActivity extends ActionBarActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (api_key.length() == 0) {
+                    Toast.makeText(getBaseContext(), "No API Key provided", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 Intent intent = new Intent(MainActivity.this, PlacePicker.class);
                 intent.putExtra(PlacePicker.PARAM_API_KEY, api_key);
 
@@ -88,7 +100,7 @@ public class MainActivity extends ActionBarActivity {
             Log.v("=====PlacePicker=====", data.getStringExtra(PlacePicker.PARAM_PLACE_ID));
             Log.v("=====PlacePicker=====", data.getStringExtra(PlacePicker.PARAM_PLACE_DESCRIPTION));
             Log.v("=====PlacePicker=====", data.toString());
-            Log.v("=====PlacePicker=====", PlacePicker.fromIntent(data).toString());
+            Log.v("=====PlacePicker=====", placeDetail.toString());
         }
     }
 }

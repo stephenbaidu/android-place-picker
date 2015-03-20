@@ -87,6 +87,8 @@ public class PlacePicker extends Activity {
 
                     startActivityForResult(intent, PlacePicker.REQUEST_CODE_RECENT_SEARCHES);
                 } else {
+                    placeHistoryManager.updateInHistory(placeInfo);
+
                     PlaceDetail placeDetail = new PlaceDetail(placeInfo.placeId, placeInfo.getDescription(), 0.0, 0.0);
                     sendResult(placeDetail);
                 }
@@ -101,9 +103,10 @@ public class PlacePicker extends Activity {
 
             @Override
             public boolean onQueryTextChange(String query) {
+                if (query.length() < 2) return false;
                 String apiKey = getIntent().getStringExtra(PARAM_API_KEY);
                 String extraQuery = getIntent().getStringExtra(PARAM_EXTRA_QUERY);
-                PlaceApiRequest.autocomplete(apiKey,extraQuery, query, new AutocompleteTask.OnTaskCompleted() {
+                PlaceApiRequest.autocomplete(apiKey, extraQuery, query, new AutocompleteTask.OnTaskCompleted() {
                     @Override
                     public void onTaskCompleted(List<PlaceInfo> resultList) {
                         if (resultList == null || resultList.isEmpty()) {

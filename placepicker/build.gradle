@@ -10,7 +10,7 @@ def gitUrl = 'https://github.com/stephenbaidu/android-place-picker.git'
 
 ext {
     PUBLISH_GROUP_ID = group
-    PUBLISH_ARTIFACT_ID = 'android-place-picker'
+    PUBLISH_ARTIFACT_ID = 'placepicker'
     PUBLISH_VERSION = version
 }
 
@@ -44,7 +44,7 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "maven"
-        name = "android-place-picker"
+        name = "placepicker"
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]
