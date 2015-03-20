@@ -44,10 +44,10 @@ Then you just need to add the following dependency to your `build.gradle`.
     // Create an intent with `PlacePicker.class`
     Intent intent = new Intent(MainActivity.this, PlacePicker.class);
     
-    // Pass your server api key (required)
+    // Set your server api key (required)
     intent.putExtra(PlacePicker.PARAM_API_KEY, api_key);
     
-    // Pass extra query as one string like below
+    // Set extra query in a one line like below
     intent.putExtra(PlacePicker.PARAM_EXTRA_QUERY, "&components=country:gh&types=(cities)");
     
     // Then start the intent for result
