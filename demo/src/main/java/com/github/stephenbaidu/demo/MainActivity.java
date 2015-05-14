@@ -19,7 +19,7 @@ import com.github.stephenbaidu.placepicker.PlacePicker;
 public class MainActivity extends ActionBarActivity {
 
     // Set your server api_key here
-    String api_key = "AIzaSyA7vPrkeeWUk7WJ--Ilji2GTk_EXxHUSCs";
+    String api_key = "";
 
     Button button1, button2;
     TextView textPlaceId, textName, latitude, longitude;
