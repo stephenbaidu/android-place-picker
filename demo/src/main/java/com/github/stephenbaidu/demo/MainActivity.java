@@ -19,10 +19,10 @@ import com.github.stephenbaidu.placepicker.PlacePicker;
 public class MainActivity extends ActionBarActivity {
 
     // Set your server api_key here
-    String api_key = "";
+    String api_key = "AIzaSyA7vPrkeeWUk7WJ--Ilji2GTk_EXxHUSCs";
 
     Button button1, button2;
-    TextView textPlaceId, textName;
+    TextView textPlaceId, textName, latitude, longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +31,12 @@ public class MainActivity extends ActionBarActivity {
 
         button1 = (Button) findViewById(R.id.button1);
         button2 = (Button) findViewById(R.id.button2);
+        button2.setEnabled(false);
 
         textPlaceId = (TextView) findViewById(R.id.text_place_id);
         textName = (TextView) findViewById(R.id.text_name);
+        latitude = (TextView) findViewById(R.id.text_latitude);
+        longitude = (TextView) findViewById(R.id.text_longitude);
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +61,14 @@ public class MainActivity extends ActionBarActivity {
                     Toast.makeText(getBaseContext(), "No API Key provided", Toast.LENGTH_LONG).show();
                     return;
                 }
+
+                PlacePicker.fetchDetails(api_key, textPlaceId.getText().toString(), new PlacePicker.OnDetailFetched() {
+                    @Override
+                    public void completed(PlaceDetail placeInfoDetail) {
+                        latitude.setText(placeInfoDetail.latitude.toString());
+                        longitude.setText(placeInfoDetail.longitude.toString());
+                    }
+                });
 
                 Intent intent = new Intent(MainActivity.this, PlacePicker.class);
                 intent.putExtra(PlacePicker.PARAM_API_KEY, api_key);
@@ -101,6 +112,8 @@ public class MainActivity extends ActionBarActivity {
             Log.v("=====PlacePicker=====", data.getStringExtra(PlacePicker.PARAM_PLACE_DESCRIPTION));
             Log.v("=====PlacePicker=====", data.toString());
             Log.v("=====PlacePicker=====", placeDetail.toString());
+
+            button2.setEnabled(true);
         }
     }
 }

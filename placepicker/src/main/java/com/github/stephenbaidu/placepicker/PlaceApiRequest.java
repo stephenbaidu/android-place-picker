@@ -11,15 +11,15 @@ public class PlaceApiRequest {
     public static final String TYPE_DETAILS = "/details";
     public static final String OUT_JSON = "/json";
 
-    public static void autocomplete(String apiKey, String extraQuery, String input, AutocompleteTask.OnTaskCompleted onTaskCompleted) {
+    protected static void autocomplete(String apiKey, String extraQuery, String input, AutocompleteTask.OnTaskCompleted onTaskCompleted) {
         AutocompleteTask autocompleteTask = new AutocompleteTask(apiKey, extraQuery);
         autocompleteTask.setOnTaskCompleted(onTaskCompleted);
         autocompleteTask.execute(input);
     }
 
-    public static void details(String apiKey, String placeId, PlaceDetailTask.OnTaskCompleted onTaskCompleted) {
+    protected static void details(String apiKey, String placeId, PlacePicker.OnDetailFetched onDetailFetched) {
         PlaceDetailTask placeDetailTask = new PlaceDetailTask(apiKey);
-        placeDetailTask.setOnTaskCompleted(onTaskCompleted);
+        placeDetailTask.setOnTaskCompleted(onDetailFetched);
         placeDetailTask.execute(placeId);
     }
 }

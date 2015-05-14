@@ -19,7 +19,7 @@ import java.net.URLEncoder;
 public class PlaceDetailTask extends AsyncTask<String, Void, PlaceDetail> {
     private static final String LOG_TAG = "PlaceDetailTask";
 
-    private OnTaskCompleted onTaskCompleted;
+    private PlacePicker.OnDetailFetched onTaskCompleted;
     private String apiKey;
 
     public PlaceDetailTask(String apiKey) {
@@ -27,12 +27,8 @@ public class PlaceDetailTask extends AsyncTask<String, Void, PlaceDetail> {
         this.onTaskCompleted = null;
     }
 
-    public interface OnTaskCompleted {
-        public void onTaskCompleted(PlaceDetail placeInfoDetail);
-    }
-
-    public void setOnTaskCompleted(OnTaskCompleted onTaskCompleted) {
-        this.onTaskCompleted = onTaskCompleted;
+    public void setOnTaskCompleted(PlacePicker.OnDetailFetched onDetailFetched) {
+        this.onTaskCompleted = onDetailFetched;
     }
 
     @Override
@@ -90,7 +86,7 @@ public class PlaceDetailTask extends AsyncTask<String, Void, PlaceDetail> {
     protected void onPostExecute(PlaceDetail placeInfoDetail) {
         super.onPostExecute(placeInfoDetail);
         if(onTaskCompleted != null) {
-            onTaskCompleted.onTaskCompleted(placeInfoDetail);
+            onTaskCompleted.completed(placeInfoDetail);
         }
     }
 }

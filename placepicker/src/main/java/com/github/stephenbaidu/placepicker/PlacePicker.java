@@ -15,6 +15,10 @@ import java.util.List;
 
 public class PlacePicker extends Activity {
 
+    public interface OnDetailFetched {
+        public void completed(PlaceDetail placeInfoDetail);
+    }
+
     public static final String PARAM_API_KEY = "place_picker_api_key";
     public static final String PARAM_EXTRA_QUERY = "place_picker_extra_query";
     public static final String PARAM_RESULT = "place_picker_result";
@@ -160,5 +164,9 @@ public class PlacePicker extends Activity {
         PlaceDetail placeDetail = intent.getExtras().getParcelable(PARAM_RESULT);
 
         return placeDetail;
+    }
+
+    public static void fetchDetails(String apiKey, String placeId, OnDetailFetched onDetailFetched) {
+        PlaceApiRequest.details(apiKey, placeId, onDetailFetched);
     }
 }
