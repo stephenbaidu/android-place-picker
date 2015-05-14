@@ -140,8 +140,8 @@ public class PlacePicker extends Activity {
         resultIntent.putExtra(PARAM_RESULT, placeDetail);
         resultIntent.putExtra(PARAM_PLACE_ID, placeDetail.placeId);
         resultIntent.putExtra(PARAM_PLACE_DESCRIPTION, placeDetail.description);
-        resultIntent.putExtra(PARAM_LATITUDE, "5.45");
-        resultIntent.putExtra(PARAM_LONGITUDE, "-2.1");
+        resultIntent.putExtra(PARAM_LATITUDE, placeDetail.latitude);
+        resultIntent.putExtra(PARAM_LONGITUDE, placeDetail.longitude);
 
         setResult(RESULT_OK, resultIntent);
         finish();
