@@ -35,7 +35,7 @@ Then you just need to add the following dependency to your `build.gradle`.
         ...
         
         // placepicker
-        compile 'com.github.stephenbaidu:placepicker:1.0'
+        compile 'com.github.stephenbaidu:placepicker:1.1'
     
     }
 
